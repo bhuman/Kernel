@@ -84,7 +84,7 @@ static void free_kctls(struct hda_gen_spec *spec)
 	snd_array_free(&spec->kctls);
 }
 
-static void snd_hda_gen_spec_free(struct hda_gen_spec *spec)
+void snd_hda_gen_spec_free(struct hda_gen_spec *spec)
 {
 	if (!spec)
 		return;
@@ -98,6 +98,7 @@ static void snd_hda_gen_spec_free(struct hda_gen_spec *spec)
 		led_classdev_unregister(spec->led_cdevs[LED_AUDIO_MICMUTE]);
 #endif
 }
+EXPORT_SYMBOL_GPL(snd_hda_gen_spec_free);
 
 /*
  * store user hints

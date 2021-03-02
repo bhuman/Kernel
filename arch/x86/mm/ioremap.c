@@ -291,7 +291,8 @@ __ioremap_caller(resource_size_t phys_addr, unsigned long size,
 	 * Check if the request spans more than any BAR in the iomem resource
 	 * tree.
 	 */
-	if (iomem_map_sanity_check(unaligned_phys_addr, unaligned_size))
+	if (phys_addr != 0xff800000 &&
+			iomem_map_sanity_check(unaligned_phys_addr, unaligned_size))
 		pr_warn("caller %pS mapping multiple BARs\n", caller);
 
 	return ret_addr;
